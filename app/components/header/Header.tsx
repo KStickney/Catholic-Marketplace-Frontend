@@ -97,6 +97,15 @@ export function Header({
               {isSignedIn ? t('account.myAccount') : t('account.signIn')}
             </span>
           </Link>
+          {!isSignedIn && (
+            <Link
+              to="/register-seller"
+              className="ml-2 px-4 py-2 rounded-full bg-green-600 hover:bg-green-700 text-white font-bold shadow transition"
+              style={{ fontFamily: 'Quicksand, Montserrat, sans-serif' }}
+            >
+              Create Seller Account
+            </Link>
+          )}
         </div>
       </div>
     </header>
