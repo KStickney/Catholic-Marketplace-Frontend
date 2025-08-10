@@ -11,18 +11,19 @@ export function CollectionCard({
       to={'/collections/' + collection.slug}
       prefetch="intent"
       key={collection.id}
-      className="max-w-[300px] relative rounded-lg overflow-hidden hover:opacity-75 xl:w-auto"
+      className="card max-w-[320px] relative rounded-2xl overflow-hidden hover:scale-105 transition-transform duration-200 xl:w-auto shadow group"
+      style={{ fontFamily: 'Quicksand, Montserrat, sans-serif' }}
     >
       <span aria-hidden="true" className="">
         <div className="w-full h-full object-center object-cover">
-          <img src={collection.featuredAsset?.preview + '?w=300&h=300'} />
+          <img className="rounded-2xl object-cover aspect-square w-full h-full group-hover:opacity-90 transition" src={collection.featuredAsset?.preview + '?w=320&h=320'} />
         </div>
       </span>
       <span
         aria-hidden="true"
-        className="absolute w-full bottom-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"
+        className="absolute w-full bottom-0 h-2/3 bg-gradient-to-t from-primary-900/80 to-transparent opacity-80"
       />
-      <span className="absolute w-full bottom-2 mt-auto text-center text-xl font-bold text-white">
+      <span className="absolute w-full bottom-4 mt-auto text-center text-2xl font-bold text-white drop-shadow-lg tracking-tight px-2">
         {collection.name}
       </span>
     </Link>

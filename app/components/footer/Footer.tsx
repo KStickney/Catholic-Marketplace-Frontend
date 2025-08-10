@@ -26,25 +26,26 @@ export default function Footer({
 
   return (
     <footer
-      className="mt-24 border-t bg-gray-50"
+      className="mt-24 border-t bg-primary-50/60 backdrop-blur-sm"
       aria-labelledby="footer-heading"
+      style={{ fontFamily: 'Quicksand, Montserrat, sans-serif' }}
     >
       <h2 id="footer-heading" className="sr-only">
         {t('footer.title')}
       </h2>
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 ">
+  <div className="max-w-7xl mx-auto py-16 px-4 sm:px-8 lg:py-20 lg:px-12 ">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">
+                <h3 className="text-sm font-semibold text-primary-700 tracking-wider uppercase">
                   {t('footer.shop')}
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {collections.map((collection) => (
                     <li key={collection.id}>
                       <Link
-                        className="text-base text-gray-500 hover:text-gray-600"
+                        className="text-base text-primary-700 hover:text-primary-500"
                         to={'/collections/' + collection.slug}
                         prefetch="intent"
                         key={collection.id}
@@ -56,7 +57,7 @@ export default function Footer({
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">
+                <h3 className="text-sm font-semibold text-primary-700 tracking-wider uppercase">
                   {t('footer.support')}
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
@@ -64,7 +65,7 @@ export default function Footer({
                     <li key={page}>
                       <a
                         href={href}
-                        className="text-base text-gray-500 hover:text-gray-600"
+                        className="text-base text-primary-700 hover:text-primary-500"
                       >
                         {t(`navigation.support.${page}`)}
                       </a>
@@ -94,10 +95,10 @@ export default function Footer({
             </div>
           </div>
           <div className="mt-8 xl:mt-0">
-            <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">
+            <h3 className="text-sm font-semibold text-primary-700 tracking-wider uppercase">
               {t('footer.subscribeHeader')}
             </h3>
-            <p className="mt-4 text-base text-gray-500">
+            <p className="mt-4 text-base text-primary-700">
               {t('footer.subscribeIntro')}
             </p>
             <form className="mt-4 sm:flex sm:max-w-md">
@@ -110,13 +111,13 @@ export default function Footer({
                 id="email-address"
                 autoComplete="email"
                 required
-                className="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white focus:border-white focus:placeholder-gray-400"
+                className="appearance-none min-w-0 w-full bg-white border border-primary-200 rounded-full py-2 px-4 text-base text-primary-700 placeholder-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-400 focus:placeholder-primary-300 shadow-sm"
                 placeholder={t('footer.emailPlaceholder')}
               />
-              <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+              <div className="mt-3 rounded-full sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                 <button
                   type="submit"
-                  className="w-full bg-primary-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-primary-500"
+                  className="etsy-btn w-full flex items-center justify-center text-base font-semibold"
                 >
                   {t('footer.subscribe')}
                 </button>
