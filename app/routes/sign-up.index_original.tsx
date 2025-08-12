@@ -10,8 +10,6 @@ import {
 import { API_URL, DEMO_API_URL } from '~/constants';
 import { useTranslation } from 'react-i18next';
 import { getFixedT } from '~/i18next.server';
-import { MutationRegisterNewSellerArgs, RegisterSellerInput } from '~/generated/graphql';
-import { registerSellerAccount } from '~/providers/seller/seller';
 
 export async function action({ request }: ActionFunctionArgs) {
   if (API_URL === DEMO_API_URL) {
@@ -29,34 +27,6 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 
   const variables = extractRegistrationFormValues(body);
-  const {emailAddress, firstName, lastName, password} = variables.input;
-
-  const sellerAccountInput : MutationRegisterNewSellerArgs = {
-    input: {
-      seller: {
-      emailAddress,
-      firstName: firstName as string,
-      lastName: lastName as string,
-      password: password as string,
-      // shopName: shopName as string,
-      },
-      shopName: firstName as string + " " + lastName as string,  // shopName as string, // todo: get from form
-    },
-  };
-
-  // Register seller account
-  // todo: make like registerCustomerAccount
-  try {
-    const sellerRegRes = await registerSellerAccount(
-      { request }, 
-      sellerAccountInput,
-    );
-  } catch (err) {
-    console.log('Error registering seller account:', err);
-    return json({ formError: 'Failed to register seller account' }, { status: 500 }); 
-  }
-
-  // TODO: if below fails, make registerSellerAccount rollback/fail
   const result = await registerCustomerAccount({ request }, variables);
   if (result.__typename === 'Success') {
     return redirect('/sign-up/success');
